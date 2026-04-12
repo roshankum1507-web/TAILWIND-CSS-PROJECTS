@@ -15,11 +15,11 @@ This repository contains my Tailwind CSS practice projects. Each project focuses
 ### Current Project
 - Project 1: Card design
 
-### What I’m Practicing
-- Responsive layout thinking
+### Key Features
 - Utility-first styling with Tailwind CSS
-- Clean spacing, typography, and visual hierarchy
-- Faster frontend workflows with Vite
+- Responsive spacing and layout control
+- Clean typography and visual hierarchy
+- Fast local development with Vite
 
 ### How to Run Locally
 1. Clone the repository.
