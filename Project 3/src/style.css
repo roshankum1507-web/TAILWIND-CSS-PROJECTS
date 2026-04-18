@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+}
+
+@layer components {
+  .chip-high {
+    @apply border-rose-200 bg-rose-100 text-rose-500;
+  }
+
+  .chip-medium {
+    @apply border-amber-200 bg-amber-100 text-amber-500;
+  }
+
+  .chip-low {
+    @apply border-mint-100 bg-mint-100 text-mint-500;
+  }
+
+  .filter-btn-active {
+    @apply border-brand-600 bg-brand-600 text-white shadow-sm;
+  }
+}

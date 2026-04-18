@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlowBoard | Practical Weekly Planner</title>
+  </head>
+  <body class="min-h-screen bg-orange-50/50 text-slate-900 antialiased">
+    <div class="relative isolate overflow-hidden">
+      <div
+        class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_12%_18%,#ffe6d4_0,transparent_28%),radial-gradient(circle_at_84%_16%,#dbf5f3_0,transparent_24%),radial-gradient(circle_at_62%_82%,#fff0cf_0,transparent_28%)]"
+      ></div>
+
+      <main class="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
+        <header class="mb-8 rounded-3xl bg-white/85 p-6 shadow-soft ring-1 ring-orange-200 backdrop-blur">
+          <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p class="text-sm font-medium uppercase tracking-[0.2em] text-brand-600">FlowBoard</p>
+              <h1 class="mt-2 text-2xl font-semibold sm:text-3xl">Weekly Task Planner</h1>
+              <p class="mt-2 max-w-2xl text-sm text-slate-700 sm:text-base">
+                Plan your week with priority tracking, category filters, and a quick progress dashboard.
+              </p>
+            </div>
+            <div class="grid grid-cols-2 gap-3 text-sm sm:min-w-56">
+              <div class="rounded-2xl bg-brand-50 p-3 ring-1 ring-brand-100">
+                <p class="text-slate-600">Total</p>
+                <p id="stat-total" class="mt-1 text-xl font-semibold text-brand-700">0</p>
+              </div>
+              <div class="rounded-2xl bg-mint-100/70 p-3 ring-1 ring-mint-100">
+                <p class="text-slate-600">Done</p>
+                <p id="stat-done" class="mt-1 text-xl font-semibold text-mint-500">0</p>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <section class="grid gap-6 lg:grid-cols-[350px,1fr]">
+          <aside class="rounded-3xl bg-white/90 p-5 shadow-soft ring-1 ring-orange-200">
+            <h2 class="text-lg font-semibold">Add New Task</h2>
+            <form id="task-form" class="mt-4 space-y-3">
+              <div>
+                <label for="title" class="mb-1 block text-sm font-medium text-slate-800">Task title</label>
+                <input
+                  id="title"
+                  name="title"
+                  placeholder="Prepare sprint demo"
+                  required
+                  class="w-full rounded-xl border border-orange-200 bg-orange-50/40 px-3 py-2 text-sm outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+                />
+              </div>
+
+              <div>
+                <label for="category" class="mb-1 block text-sm font-medium text-slate-800">Category</label>
+                <select
+                  id="category"
+                  name="category"
+                  class="w-full rounded-xl border border-orange-200 bg-orange-50/40 px-3 py-2 text-sm outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+                >
+                  <option value="Work">Work</option>
+                  <option value="Study">Study</option>
+                  <option value="Personal">Personal</option>
+                  <option value="Health">Health</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="priority" class="mb-1 block text-sm font-medium text-slate-800">Priority</label>
+                <select
+                  id="priority"
+                  name="priority"
+                  class="w-full rounded-xl border border-orange-200 bg-orange-50/40 px-3 py-2 text-sm outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+                >
+                  <option value="High">High</option>
+                  <option value="Medium" selected>Medium</option>
+                  <option value="Low">Low</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="due" class="mb-1 block text-sm font-medium text-slate-800">Due date</label>
+                <input
+                  id="due"
+                  name="due"
+                  type="date"
+                  required
+                  class="w-full rounded-xl border border-orange-200 bg-orange-50/40 px-3 py-2 text-sm outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+                />
+              </div>
+
+              <button
+                type="submit"
+                class="w-full rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-brand-700 active:translate-y-px"
+              >
+                Add Task
+              </button>
+            </form>
+          </aside>
+
+          <section class="rounded-3xl bg-white/90 p-5 shadow-soft ring-1 ring-orange-200">
+            <div class="mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+              <h2 class="text-lg font-semibold">Task Queue</h2>
+              <div class="flex flex-wrap gap-2">
+                <button class="filter-btn rounded-full border border-orange-200 px-3 py-1.5 text-xs font-medium" data-filter="all">
+                  All
+                </button>
+                <button class="filter-btn rounded-full border border-orange-200 px-3 py-1.5 text-xs font-medium" data-filter="Work">
+                  Work
+                </button>
+                <button class="filter-btn rounded-full border border-orange-200 px-3 py-1.5 text-xs font-medium" data-filter="Study">
+                  Study
+                </button>
+                <button class="filter-btn rounded-full border border-orange-200 px-3 py-1.5 text-xs font-medium" data-filter="Personal">
+                  Personal
+                </button>
+                <button class="filter-btn rounded-full border border-orange-200 px-3 py-1.5 text-xs font-medium" data-filter="Health">
+                  Health
+                </button>
+              </div>
+            </div>
+
+            <ul id="task-list" class="space-y-3"></ul>
+            <p id="empty-state" class="rounded-2xl bg-orange-50/50 p-4 text-sm text-slate-600">
+              No tasks yet. Add your first task from the left panel.
+            </p>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
